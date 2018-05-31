@@ -1,0 +1,92 @@
+<!-- <!DOCTYPE> declaration is not an HTML tag.
+It is an instruction to the web browser about what version of HTML the page is written in.
+In HTML 4.01, the <!DOCTYPE> declaration refers to a DTD (Document Type Definition), because HTML 4.01 was based on SGML.
+The DTD specifies the rules for the markup language, so that the browsers render the content correctly.
+HTML5 is not based on SGML, and therefore does not require a reference to a DTD. -->
+<!DOCTYPE html>
+<html lang="en"> <!-- The lang attribute specifies the language of the element's content. -->
+<head>
+	<!-- To display an HTML page correctly, a web browser must know the character set used in the page.
+	The default character encoding for HTML5 is UTF-8. -->
+    <meta charset="UTF-8">
+    <!-- A <meta> viewport element gives the browser instructions on how to control the page's dimensions and scaling.
+	The width=device-width part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).
+	The initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser. -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The http-equiv attribute provides an HTTP header for the information/value of the content attribute.
+    The X-UA-Compatible meta tag allows web authors to choose what version of Internet Explorer the page should be rendered as.
+    Edge mode tells Internet Explorer to display content in the highest mode available. -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+</head>
+<body>
+<h2>Calculator</h2>
+<form>
+	<!-- type="number" accepts only numerical value.
+	autocomplete="off" disables guessing the input from previous input data.
+	required makes the input field important to be filled before submiting form.
+	readonly makes the input field non-editable. -->
+	Number 1 : <input type="number" id="num1" autocomplete="off" required><br>
+	Number 2 : <input type="number" id="num2" autocomplete="off" required><br>
+	<!-- &nbsp is unicode character as alternative to single white space. -->
+	Result &nbsp&nbsp&nbsp&nbsp&nbsp : <input type="number" id="result" value="" readonly><br>
+	Operation : 
+		<!-- type="button" converts input into button.
+		value="something" is the by default content of an input field.
+		name="something" is the content by which form data is accessed from server side programming.
+		name attribute is used to differentiate one input tag from another. The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted. Only form elements with a name attribute will have their values passed when submitting a form.
+		onclick="myFunction()" runs the function when element is clicked. -->
+		<input type="button" onclick="add()" value="+">
+		<input type="button" onclick="sub()" value="-">
+		<input type="button" onclick="mul()" value="*">
+		<input type="button" onclick="div()" value="/">
+		<!-- type="reset" converts input into a reset button which clears the form data. -->
+		<input type="reset" value="C">
+</form>
+<script>
+	// document.querySelector(".class|#id"); is used to select html element.
+	// document.getElementById("id"); is used to select element by id.
+	// document.getElementsByClassName("class"); is used to select elements by class.
+	// document.querySelector("#id").value; is used to get value of selected element.
+	// document.querySelector("#id").value = "something"; is used to set value of selected element.
+
+	// value is by default a string.
+	// var a = document.querySelector("#num1").value;
+	// var b = document.querySelector("#num2").value;
+	// var c = a + b;
+	// if a = 5 and b = 6 then c = 56 not 11 because here a and b are strings and hence they conatenate in c.
+
+	// to change string with only numbers they should have prefix +
+	// var a = document.querySelector("#num1").value;
+	// var b = document.querySelector("#num2").value;
+	// var c = +a + +b;
+	// if a = 5 and b = 6 then c = 11
+	// or
+	// var a = +(document.querySelector("#num1").value);
+	// var b = +(document.querySelector("#num2").value);
+	// var c = a + b;
+	// if a = 5 and b = 6 then c = 11
+
+	function add(){
+		var a = +(document.querySelector("#num1").value);
+		var b = +(document.querySelector("#num2").value);
+		document.querySelector("#result").value = a+b;
+	}
+	function sub(){
+		var a = +(document.querySelector("#num1").value);
+		var b = +(document.querySelector("#num2").value);
+		document.querySelector("#result").value = a-b;
+	}
+	function mul(){
+		var a = +(document.querySelector("#num1").value);
+		var b = +(document.querySelector("#num2").value);
+		document.querySelector("#result").value = a*b;
+	}
+	function div(){
+		var a = +(document.querySelector("#num1").value);
+		var b = +(document.querySelector("#num2").value);
+		document.querySelector("#result").value = a/b;
+	}
+</script>
+</body>
+</html>
