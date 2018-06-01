@@ -48,14 +48,14 @@ HTML5 is not based on SGML, and therefore does not require a reference to a DTD.
 	// dateObject.getUTCDate|Month|FullYear extracts Date|Month|FullYear from dateObject.
 	// Month starts from 0, hence need to incremented by 1.
 	function calculateAge(){
-		var t  = new Date(),
-			td = t.getUTCDate(),
-			tm = t.getUTCMonth() + 1,
-			ty = t.getUTCFullYear(),
-			b  = new Date(document.querySelector("#bday").value),
+		var b  = new Date(document.querySelector("#bday").value),
 			bd = b.getUTCDate(),
 			bm = b.getUTCMonth() + 1,
 			by = b.getUTCFullYear(),
+			t  = new Date(),
+			td = t.getUTCDate(),
+			tm = t.getUTCMonth() + 1,
+			ty = t.getUTCFullYear(),
 			ly = ty % 4,
 			dd = td - bd,
 			dm = tm - bm,
@@ -77,8 +77,12 @@ HTML5 is not based on SGML, and therefore does not require a reference to a DTD.
 			dy--;
 			dm += 12;
 		}
-		var totalDays = dy * 365.25 + dm * 30.55 + dd;
-		document.querySelector("#result").innerHTML = "Your current age is found to be " + dy + " years " + dm + " months and " + dd + "  days and the number of days you lived are " + totalDays + " !";
+		if (b<=t){
+			var totalDays = dy * 365.25 + dm * 30.55 + dd;
+			document.querySelector("#result").innerHTML = "Your current age is found to be " + dy + " years " + dm + " months and " + dd + "  days and the number of days you lived are " + totalDays + " !";
+		} else {
+			document.querySelector("#result").innerHTML = "Future dates are not acceptable!";
+		}
 	}
 	function resetResult(){
 		document.querySelector("#bday").value = "";
