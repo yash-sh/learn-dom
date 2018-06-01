@@ -17,24 +17,31 @@ HTML5 is not based on SGML, and therefore does not require a reference to a DTD.
     The X-UA-Compatible meta tag allows web authors to choose what version of Internet Explorer the page should be rendered as.
     Edge mode tells Internet Explorer to display content in the highest mode available. -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Age Calculator</title>
+    <title>Calculator</title>
 </head>
 <body>
-<h2>Age Calculator</h2>
+<h2>Calculator</h2>
 <form>
-	<!-- type="date" accepts date with a browser's default date picker.
+	<!-- type="number" accepts only numerical value.
+	autocomplete="off" disables guessing the input from previous input data.
 	required makes the input field important to be filled before submiting form.
 	readonly makes the input field non-editable. -->
-	Date of Birth : <input type="date" id="bday" required>
-	<!-- type="button" converts input into button.
-	value="something" is the by default content of an input field.
-	name="something" is the content by which form data is accessed from server side programming.
-	name attribute is used to differentiate one input tag from another. The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted. Only form elements with a name attribute will have their values passed when submitting a form.
-	onclick="myFunction()" runs the function when element is clicked. -->
-	<input type="button" onclick="calculateAge()" value="Calculate">
-	<!-- type="reset" converts input into a reset button which clears the form data. -->
-	<input type="button" onclick="resetResult()" value="Reset"><br><br>
-	<p id="result"></p>
+	Number 1 : <input type="number" id="num1" autocomplete="off" required><br>
+	Number 2 : <input type="number" id="num2" autocomplete="off" required><br>
+	<!-- &nbsp is unicode character as alternative to single white space. -->
+	Result &nbsp&nbsp&nbsp&nbsp&nbsp : <input type="number" id="result" value="" readonly><br>
+	Operation : 
+		<!-- type="button" converts input into button.
+		value="something" is the by default content of an input field.
+		name="something" is the content by which form data is accessed from server side programming.
+		name attribute is used to differentiate one input tag from another. The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted. Only form elements with a name attribute will have their values passed when submitting a form.
+		onclick="myFunction()" runs the function when element is clicked. -->
+		<input type="button" onclick="add()" value="+">
+		<input type="button" onclick="sub()" value="-">
+		<input type="button" onclick="mul()" value="*">
+		<input type="button" onclick="div()" value="/">
+		<!-- type="reset" converts input into a reset button which clears the form data. -->
+		<input type="reset" value="C">
 </form>
 <script>
 	// document.querySelector(".class|#id"); is used to select html element.
@@ -43,56 +50,42 @@ HTML5 is not based on SGML, and therefore does not require a reference to a DTD.
 	// document.querySelector("#id").value; is used to get value of selected element.
 	// document.querySelector("#id").value = "something"; is used to set value of selected element.
 
-	// new Date() creates a date object with current date.
-	// new Date(dateOject) creates a date object from given date.
-	// dateObject.getUTCDate|Month|FullYear extracts Date|Month|FullYear from dateObject.
-	// Month starts from 0, hence need to incremented by 1.
-	function calculateAge(){
-		var b  = new Date(document.querySelector("#bday").value),
-			bd = b.getUTCDate(),
-			bm = b.getUTCMonth() + 1,
-			by = b.getUTCFullYear(),
-			t  = new Date(),
-			td = t.getUTCDate(),
-			tm = t.getUTCMonth() + 1,
-			ty = t.getUTCFullYear(),
-			ly = ty % 4,
-			dd = td - bd,
-			dm = tm - bm,
-			dy = ty - by;
-		if (dd<0 && ((tm===1) || (tm===3) ||(tm===5) || (tm===7) || (tm===8) || (tm===10) || (tm===12))){
-			dd += 31;
-			dm--;
-		} else if ((dd<0) && (tm===2) && (ly===0)){
-			dd += 29;
-			dm--;
-		} else if ((dd<0) && (tm===2)){
-			dd += 28;
-			dm--;
-		} else if ((dd<0) && ((tm=== 4) || (tm=== 6) || (tm===9) || (tm=== 11))){
-			dd += 30;
-			dm--;
-		}
-		if (dm<0){
-			dy--;
-			dm += 12;
-		}
-		if (b<=t){
-			if ((bm===tm) && (bd==td)){
-				var totalDays = dy * 365.25 + dm * 30.55 + dd;
-				document.querySelector("#result").innerHTML = "Happy Birthday! Your current age is found to be " + dy + " years " + dm + " months and " + dd + "  days and the number of days you lived are " + totalDays + " ! Bless you a long and happy life..";
-			} else {
-				var totalDays = dy * 365.25 + dm * 30.55 + dd;
-				document.querySelector("#result").innerHTML = "Your current age is found to be " + dy + " years " + dm + " months and " + dd + "  days and the number of days you lived are " + totalDays + " !";
-			}
-		} else {
-			document.querySelector("#result").innerHTML = "Future dates are not acceptable!";
-		}
-		
+	// value is by default a string.
+	// var a = document.querySelector("#num1").value;
+	// var b = document.querySelector("#num2").value;
+	// var c = a + b;
+	// if a = 5 and b = 6 then c = 56 not 11 because here a and b are strings and hence they conatenate in c.
+
+	// to change string with only numbers they should have prefix +
+	// var a = document.querySelector("#num1").value;
+	// var b = document.querySelector("#num2").value;
+	// var c = +a + +b;
+	// if a = 5 and b = 6 then c = 11
+	// or
+	// var a = +(document.querySelector("#num1").value);
+	// var b = +(document.querySelector("#num2").value);
+	// var c = a + b;
+	// if a = 5 and b = 6 then c = 11
+
+	function add(){
+		var a = +(document.querySelector("#num1").value);
+		var b = +(document.querySelector("#num2").value);
+		document.querySelector("#result").value = a+b;
 	}
-	function resetResult(){
-		document.querySelector("#bday").value = "";
-		document.querySelector("#result").innerHTML = "";
+	function sub(){
+		var a = +(document.querySelector("#num1").value);
+		var b = +(document.querySelector("#num2").value);
+		document.querySelector("#result").value = a-b;
+	}
+	function mul(){
+		var a = +(document.querySelector("#num1").value);
+		var b = +(document.querySelector("#num2").value);
+		document.querySelector("#result").value = a*b;
+	}
+	function div(){
+		var a = +(document.querySelector("#num1").value);
+		var b = +(document.querySelector("#num2").value);
+		document.querySelector("#result").value = a/b;
 	}
 </script>
 </body>
