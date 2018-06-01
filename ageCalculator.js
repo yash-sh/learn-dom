@@ -30,11 +30,11 @@ if (dm<0){
 }
 if (b<=t){
 	if ((bm===tm) && (bd==td)){
-		var totalDays = dy * 365.25 + dm * 30.55 + dd;
+		var totalDays = Math.floor(dy * 365.25 + dm * 30.55 + dd);
 		console.log("Happy Birthday! Your current age is found to be " + dy + " years " + dm + " months and " + dd + "  days and the number of days you lived are " + totalDays + " ! Bless you a long and happy life..");
 	} else {
-		var totalDays = dy * 365.25 + dm * 30.55 + dd;
-		console.log("Your current age is found to be " + dy + " years " + dm + " months and " + dd + "  days and the number of days you lived are " + totalDays + " !");
+		var totalDays = Math.floor(dy * 365.25 + dm * 30.55 + dd);
+		console.log("Your current age is found to be " + dy + " years " + dm + " months and " + dd + "  days and the number of days you lived are " + totalDays + " !")
 	}
 } else {
 	console.log("Future dates are not acceptable!");
