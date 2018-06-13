@@ -1,0 +1,39 @@
+*{  margin: 0px;
+	padding: 0px;}
+section,a,p {display: block;}
+header { font: 35px bold tahoma ; width: 75%; padding-top: 20px;margin: 0 12.5%;color: #ffe100;  }	
+body {width:100%;
+     background: #558ae0}
+#container{max-width: 1000px;
+           		margin: 30px 0;
+           		display: -webkit-box;
+     -webkit-box-orient:vertical;
+       -webkit-box-flex:1;}
+section {border: 2px solid #3d87ff;
+ 			-webkit-box-flex:1;
+ 			margin:30px;padding: 20px;}
+input[type=number]:focus {
+    background-color: #fcee88;border:2px solid #66cccc;
+}
+input[type=number]{
+ background-color: #3CBC8D;margin-top: 10px;width:25vh;
+}
+.button{   
+     background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+ padding: 8px 16px;
+  font-size: 10px;
+    margin: 4px 2px;  }  
+    .button:active {   background-color: #008CBA;
+    color: white;} 
+ label{color: white; font:4vh bold tahoma;}
+ .subject{padding: 0 0 10px 10px;text-decoration: none;font:3.4vh bold tahoma;color: white;
+           }
+
+form{padding-bottom: 30px;}
+.linked	{font:3vh bold tahoma;text-decoration: none;color: #d6d6d6;}
+td {font:3vh bold tahoma;text-decoration: none;color: #d6d6d6;
+    padding: 10px;
+    text-align: left;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+	 <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   	 <title>BitcoinTalk.org Data</title>
+   	 <link rel="stylesheet" type="text/css" href="home.css">
+</head>
+<body>
+ 	<div id="container">
+ 		<header>
+ 			<h4>You are on Page <%= pageno %></h4>
+ 		<a href="/?page=<%= pageno-1%>">	<button style="float:left"class="button" >Previous</button></a>
+ 		<a href="/?page=<%= pageno+1%>">	<button style="float:left"class="button" >Next</button></a>
+ 		<a href="/%>">	<button style="float:left"class="button" >HOME</button></a>
+ 		</header>
+ 
+ 		<section>
+ 			<form action="/" method="GET">
+ 				<label>Go to page:</label>
+				<input type="number" min="1" max="<%=result["data"]["total"]%>" name="page" placeholder="Total pages: <%=result["data"]["total"]%>">
+				<input type="submit" class="button" name="">
+			</form>
+
+	<% for(var i=0 ; i< result["data"]["subject"].length;i++){%>
+       
+        <a class="subject" href="<%= result["data"]["subjectlink"][i]%>"><%=result["data"]["subject"][i]%></a>
+
+        <table>
+        	<tr>
+        		<td>Started by: </td>
+        		<td ><a  class="linked" href="<%= result["data"]["starterlink"][i]%>"><%=result["data"]["starter"][i]%></a></td>
+        	</tr>
+        	<tr>
+        		<td>Views</td>
+        		<td><%= result["data"]["view"][i]%></td>
+        	</tr>
+        	<tr>
+        		<td>Replies</td>
+        		<td><%= result["data"]["reply"][i]%></td>
+        	</tr>
+        	<tr>
+        		<td>Last Post </td>
+        		<td > <a class="linked" href="<%= result["data"]["lastpostlink"][i]%>"><%=result["data"]["lastpost"][i]%></a></td>
+        	</tr>
+        </table>
+        <% }%>
+		</section>
+</div>
+</body>
+</html>
