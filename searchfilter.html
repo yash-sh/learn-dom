@@ -39,7 +39,6 @@ display:none;
     <option value=" 8">8</option>
 </select>
 <input type="text" id="info" onkeyup="searchFunction()" placeholder="Search more.. subject title">
-<div id="posts">
   <div class="post">
     <p class="search hide">ICE 2 Maths Hyperbolic Fuctions</p>
     ICE 2 Maths Hyperbolic Fuctions
@@ -80,11 +79,10 @@ display:none;
     COE 1 Power Aparatus Induction Machine
     <a href="#">link7</a>
   </div>
-</div>
 
 <script>
 function searchFunction() {
-  var input, filter, table, post, search, i;
+  var branch, sem, info, filter, post, search, i;
   branch = document.getElementById("branch");
   sem = document.getElementById("sem");
   info = document.getElementById("info");
@@ -93,8 +91,7 @@ function searchFunction() {
   } else {
     filter = branch.value.toUpperCase()+sem.value.toUpperCase()+" "+info.value.toUpperCase();
   }
-  posts = document.getElementById("posts");
-  post = posts.getElementsByClassName("post");
+  post = document.getElementsByClassName("post");
   for (i = 0; i < post.length; i++) {
     search = post[i].getElementsByClassName("search")[0];
     if (search) {
