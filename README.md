@@ -1,4 +1,4 @@
-# learn-js
+# learn-dom
 
 + [Simple calculator](https://yashs2399.github.io/learn-dom/calculator.html)
 + [Age Calculator](https://yashs2399.github.io/learn-dom/ageCalculator.html)
