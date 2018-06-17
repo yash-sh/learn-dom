@@ -121,7 +121,7 @@ HTML5 is not based on SGML, and therefore does not require a reference to a DTD.
       info = document.getElementById("info");
 
       // if value of branch and sem are empty
-      if((branch.value==="") && (sem.value==="")){
+      if((!branch.value) && (!sem.value)){
           // set variable filter as value of info in upper case
           filter = info.value.toUpperCase();
       } else {
