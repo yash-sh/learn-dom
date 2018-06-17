@@ -143,7 +143,11 @@ HTML5 is not based on SGML, and therefore does not require a reference to a DTD.
       //     3. [...posts].forEach(function(post){do_something_with_post}) // spread array-like objects into array
 
       // using spread operator for each post
-      [...posts].forEach(function(post){
+      // function(parameter1, parameter2){use_parameters} // regular format for callback function
+      // (parameter1, parameter2) => {use_parameters} // ES6 format for callback function using fat arrow
+      // (parameter1) => {use_parameter1} can be written as :
+      // 1. parameter1 => {use_parameter1} or 2. parameter1 => use_parameter1 in single line
+      [...posts].forEach(post => {
           // set variable search as element who belongs to class search in post
           search = post.getElementsByClassName("search")[0];
           if(search){
