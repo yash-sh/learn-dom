@@ -6,22 +6,23 @@
 <body>
    <button onclick="addLink()" >Add a link</button>
    <button onclick="addFile()" >Upload a File</button>
-   
-					 <form>
+  <div  class="Form"> 
+					 <form style="display: none;">
 							<input type="file" id="input" name="file" required>
 							<input type="submit" name="">
 					</form> 
-	
+	</div>
 <script type="text/javascript" >
 	function addLink(){
 	document.querySelector("#input").type="text";
+	document.querySelector("form").style.display="";
 };
-	function addFile(){
+function addFile(){
 	document.querySelector("#input").type="file";
+	document.querySelector("form").style.display="";
 };
 
 </script>
 </body>
 </html>
-
 
