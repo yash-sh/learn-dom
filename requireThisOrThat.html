@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nothing</title>
+	<style type="text/css">
+		.linkForm, .fileForm {display:none;}
+	</style>
+</head>
+<body>
+   <button onclick="addLink()" >Add a link</button>
+   <button onclick="addFile()" >Upload a File</button>
+     <div class="linkForm">
+     				 <form>
+							<input type="text" name="">
+							<input type="submit" name="">
+					</form>
+	</div>
+  
+	<div  class="fileForm"> 
+					 <form>
+							<input type="file" name="">
+							<input type="submit" name="">
+					</form> 
+	</div>
+<script type="text/javascript" >
+	function addLink(){
+	document.querySelector("div:nth-of-type(1)").classList.remove("linkForm");
+    document.querySelector("div:nth-of-type(2)").classList.add("fileForm");
+};
+function addFile(){
+	document.querySelector("div:nth-of-type(1)").classList.add("linkForm");
+    document.querySelector("div:nth-of-type(2)").classList.remove("fileForm");
+};
+
+</script>
+</body>
+</html>
+
