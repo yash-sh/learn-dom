@@ -1,0 +1,73 @@
+<form id="req" action="/del/del/deleted/request" method="POST">
+	Click the request to delete:
+	<ol><% for (var i = 0; i < requests.length; i++) { %>
+		 <li><p style="cursor: pointer;color: darkgreen;" class="req<%=i%>" onclick="alertedreq<%=i%>()" ><%=requests[i]%></p></li>
+	<% } %>
+
+</ol>
+	
+</form>
+<form id="que" action="/del/del/deleted/question" method="POST">
+	Click the question to delete:
+	it will delete everything inside that post.
+	<ol><% for (var k = 0; k < questions.length; k++) { %>
+		 <li><p style="cursor: pointer;color: darkgreen;" class="que<%=k%>"onclick="alertedque<%=k%>()" ><%=questions[k].ques%></p></li>
+	<% } %>
+
+</ol>
+
+
+</form>
+<form id="code" action="/del/del/deleted/code" method="POST">
+	Click the question, whose code is to be deleted:
+	it will delete everything inside code.
+	<ol><% for (var m = 0; m < questions.length; m++) { %>
+		 <li><%=questions[m].ques%></li>
+		 <ol> <% for (var n = 0; n < questions[m].codeNames.length; n++) { -%>
+		 	<li><p style="cursor: pointer;color: darkgreen;" class="code<%=m%><%=n%>"onclick="alertedcode<%=m%><%=n%>()"><%=questions[m].codeNames[n]%></p></li>
+		 <% } -%></ol>
+		
+	<% } %>
+
+</ol>
+</form>
+<script type="text/javascript">
+<% for (var j = 0; j < requests.length; j++) { -%>
+		function alertedreq<%=j%>(){
+   var ans = prompt("Sure? n Just type y or n");
+   if(ans=="yes"||ans=="YES"||ans=="yeah"||ans=="yup"||ans=="y"||ans=="Y")
+   {  document.querySelector("#req").action="/del/del/deleted/request/<%=j%>";
+   document.querySelector("#req").submit();}
+   else{
+     document.querySelector(".req<%=j%>").href="/del/del/delete/";
+   }
+};
+<% } -%>
+<% for (var l = 0; l < questions.length; l++) { -%>
+		function alertedque<%=l%>(){
+   var ans = prompt("Sure? n Just type y or n");
+   if(ans=="yes"||ans=="YES"||ans=="yeah"||ans=="yup"||ans=="y"||ans=="Y")
+   { document.querySelector("#que").action="/del/del/deleted/question/<%=l%>";
+   document.querySelector("#que").submit();}
+   else{
+     document.querySelector(".que<%=l%>").href="/del/del/delete/";
+   }
+};
+<% } -%>
+
+<% for (var o = 0; o < questions.length; o++) { -%>
+<% for (var p = 0; p < questions[o].codeNames.length; p++) { -%>
+ 	function alertedcode<%=o%><%=p%>(){
+   var ans = prompt("Sure? \n Just type y or n");
+   if(ans=="yes"||ans=="YES"||ans=="yeah"||ans=="yup"||ans=="y"||ans=="Y")
+   { document.querySelector("#code").action="/del/del/deleted/code/<%=o%>/<%=p%>";
+   document.querySelector("#code").submit();}
+   else{
+     document.querySelector(".code<%=o%><%=p%>").href="/del/del/delete/";
+   }
+};
+ <% } -%>
+
+<% } -%>
+
+ </script>
