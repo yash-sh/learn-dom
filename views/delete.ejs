@@ -1,0 +1,34 @@
+<h3><a href="/">Home</a></h3>
+Click the request to delete:
+<ol>
+<% for (var i = 0; i < requests.length; i++) { %>
+	<form id="req" action="/del/del/delete/request/<%=requests[i]._id%>" method="POST">
+		 <li><button style="outline:none;border:none;cursor: pointer;color: darkgreen;background:none;"><%=requests[i].title%></button></li>
+	</form>
+<% } %>
+</ol>
+	
+Click the question to delete:
+it will delete everything inside that post.
+<ol>
+<% for (var k = 0; k < questions.length; k++) { %>
+	<form id="que" action="/del/del/delete/question/<%=questions[k]._id%>" method="POST">
+		 <li><button style="outline:none;border:none;cursor: pointer;color: darkgreen;background:none;"><%=questions[k].ques%></button></li>
+	</form>
+	<% } %>
+</ol>
+
+Click the question, whose code is to be deleted:
+it will delete everything inside code.
+<ol>
+	<% for (var m = 0; m < questions.length; m++) { %>
+	<li><%=questions[m].ques%></li>
+		 <ol>
+		 	<% for (var n = 0; n < questions[m].codeNames.length; n++) { %>
+		 		<form id="code" action="/del/del/delete/<%=questions[m]._id%>/<%=questions[m].codeNames[n]%>/<%=questions[m].codes[n]%>" method="POST">
+		 			<li><button style="outline:none;border:none;cursor: pointer;color: darkgreen;background:none;"><%=questions[m].codeNames[n]%></button></li>
+		 		</form>
+		 	<% } %>
+		 </ol>
+	<% } %>
+</ol>

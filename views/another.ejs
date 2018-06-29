@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <title>QUES POST</title>
+	 <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	 
+	 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	 <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-icon-180x180.png">
+     <link rel="icon" type="image/png" sizes="192x192"  href="favicons/android-icon-192x192.png">
+     <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+     <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
+     <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+     <link rel="manifest" href="favicons/manifest.json">
+     <meta name="msapplication-TileColor" content="#ffffff">
+     <meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png">
+     <meta name="theme-color" content="#ffffff">
+          <style type="text/css">
+     	*{  margin: 0px;
+  padding: 0px;
+}
+    
+section {-webkit-box-flex:1;align-items: center;}
+
+header, section {display: block;}
+
+.big_wrapper{
+               max-width:   1000px;
+                  margin:   30px 0;
+                 display:   -webkit-box;
+      -webkit-box-orient:   vertical;
+        -webkit-box-flex:   1;
+    }
+
+body {
+                 width:   100%;
+              background:   #f9f6f2;
+             font-family:   'Raleway', sans-serif;
+}
+h2{ 
+                  width:   75%; 
+             padding-top:   20px;
+          padding-bottom:   25px;
+                  margin:   0 12.5%;
+                   color:   #297c89;
+  }
+  h4{ 
+                  width:   75%; 
+             padding-top:   20px;
+          padding-bottom:   25px;
+                  margin:   0 12.5%;
+                   color:   #297c89;
+  }  
+ 
+  .btn{   
+  	    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+      font-size:   15px;
+             margin-left:   30vw;
+             margin-top:   15px;
+                   width:   25vh;
+                   margin-bottom: 10px;float: left;
+             
+      }   
+
+.btn:active{  
+        background-color:   #008CBA;
+                   color:   white;
+     }
+.btn:hover{
+            background:   #02a5db;
+                 color:   white; }
+                  .cancel{background:red;margin-left:   2vw; }              
+  .save{margin-left:   25vw; }  
+@media only screen and (max-width: 600px) {
+   .save{margin-left:   2vw; }  
+} 
+textarea { resize: vertical; }
+
+.forCN{display:block; color: #2b9191;width:60vw;height:30px;float: left; margin:   0 12.5%;border-style: solid;}
+.forcode{display:block; color: #2b9191;width:70vw ;height:30vh;float: left; margin:   0 12.5%;border-style: solid;} 
+
+.forcode:focus{border: 2px solid #2b9191;}
+     </style>
+ </head>
+ <body>
+ 	<header><h2>Adding another code to query: <%=question.ques%></h2></header>
+ 	<section><form action="/addanothercode/<%=question._id%>" method="POST">
+	<h4>Code Language Name:</h4><input style="margin-bottom: 25px;margin-top: 25px;"  required class="forCN" type="text" name="anothercodename" placeholder="like C, JAVA, CPP etc." value=""><br>
+         <textarea style="margin-bottom: 25px;" required class="forcode" name="anothercode" placeholder="Add your code here..." value=""></textarea>
+         <input class="btn save" type="submit" name="">
+</form> <a href="/"><button class="btn cancel">CANCEL</button></a></section></section>
+</body>
+</html>
