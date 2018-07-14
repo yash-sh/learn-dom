@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>map</title>
+	<style>
+		*{
+			margin: 0;
+		}
+		#map{
+			width: 100%;
+			height: 100vh;
+		}
+	</style>
+<body>
+<div id="map">
+	<!-- map will load in this div -->
+</div>
+<script>
+	var place, map, newMap;
+	function initMap() {
+		// set default location to load before getting current location
+        place = {
+        	lat: 28.6213,
+        	lng: 77.0613
+        };
+        // load map with default location in div with id map
+        map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 15, center: place}
+        );
+        // initiate new map for current location
+        newMap = new google.maps.InfoWindow;
+        if (navigator.geolocation) { // check if browser supports geolocation
+        	// get current position from geolocation
+        	navigator.geolocation.getCurrentPosition(function(position) {
+        		// update place with current location
+	            place = {
+	             	lat: position.coords.latitude,
+	             	lng: position.coords.longitude
+	            };
+	            // set updated place in newMap
+	            newMap.setPosition(place);
+	            // set success message on map
+	            newMap.setContent('Current location found.');
+	            // open newMap in map 
+	            newMap.open(map);
+	            // set updated place as centre of map
+	            map.setCenter(place);
+         	}, function() { // callback when user deny to share location
+         		// pass newMap and centre as new updated place in handle error
+         		handleLocationError(true, newMap, map.getCenter());
+         	});
+        } else { // if browser doesn't support geolocation
+        	// pass newMap and centre as default location in handle error
+        	handleLocationError(false, newMap, map.getCenter());
+        }
+        // set marker to default location
+        new google.maps.Marker({position: place, map: map});
+    }
+	function handleLocationError(browserHasGeolocation, newMap, pos) {
+		// set position of newMap to pos
+        newMap.setPosition(pos);
+        // set error message
+        newMap.setContent(browserHasGeolocation ? 'Error: User denied to share current location.' : 'Error: Browser doesn\'t support geolocation.');
+        // open newMap in map
+        newMap.open(map);
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+</body>
+</html>
